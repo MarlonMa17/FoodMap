@@ -72,12 +72,15 @@
     "name": "梅利汴京烤鸭",
     "dishes": [
       "烤鸭",
-      "炸八块"
+      "炸八块",
+      "烤羊肉",
+      "菜笋",
+      "秘制涮肚"
     ],
     "address": "集英街",
     "category": "炒菜类",
-    "_pinyin": "mei li bian jing kao ya kao ya zha ba kuai ji ying jie",
-    "_initials": "mlbjkykyzbkjyj"
+    "_pinyin": "mei li bian jing kao ya kao ya zha ba kuai kao yang rou cai sun mi zhi shuan du ji ying jie",
+    "_initials": "mlbjkykyzbkkyrcsmzsdjyj"
   },
   {
     "id": 8,
