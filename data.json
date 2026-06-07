@@ -1274,5 +1274,16 @@
     "category": "甜品饮品",
     "_pinyin": "",
     "_initials": ""
+  },
+  {
+    "id": 103,
+    "name": "员和记",
+    "dishes": [
+      "牛羊肉"
+    ],
+    "address": "星光天地",
+    "category": "火锅麻辣烫",
+    "_pinyin": "",
+    "_initials": ""
   }
 ]
