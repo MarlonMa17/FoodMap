@@ -1285,5 +1285,16 @@
     "category": "火锅麻辣烫",
     "_pinyin": "",
     "_initials": ""
+  },
+  {
+    "id": 104,
+    "name": "巴奴",
+    "dishes": [
+      "毛肚"
+    ],
+    "address": "万达",
+    "category": "火锅麻辣烫",
+    "_pinyin": "",
+    "_initials": ""
   }
 ]
