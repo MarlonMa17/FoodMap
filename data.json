@@ -1307,5 +1307,16 @@
     "category": "炒菜类",
     "_pinyin": "mi cun ban fan you yu wan da",
     "_initials": "mcbfyywd"
+  },
+  {
+    "id": 106,
+    "name": "羊肉鲜汤饸烙面",
+    "dishes": [
+      "饸烙面"
+    ],
+    "address": "晋安路荣勋花园",
+    "category": "面食类",
+    "_pinyin": "yang rou xian tang he lao mian he lao mian jin an lu rong xun hua yuan",
+    "_initials": "yrxthlmhlmjalrxhy"
   }
 ]
