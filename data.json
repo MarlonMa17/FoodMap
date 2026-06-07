@@ -1284,5 +1284,17 @@
     "category": "烧烤类",
     "_pinyin": "zhang xian sheng kao rou 1 9 8 tao can xin he da dong men dui mian",
     "_initials": "zxskr198tcxhddmdm"
+  },
+  {
+    "id": 104,
+    "name": "兰湘子",
+    "dishes": [
+      "烤鱼",
+      "炒肉"
+    ],
+    "address": "星光天地，万达",
+    "category": "炒菜类",
+    "_pinyin": "lan xiang zi kao yu chao rou xing guang tian di ， wan da",
+    "_initials": "lxzkycrxgtd，wd"
   }
 ]
