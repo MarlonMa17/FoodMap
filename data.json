@@ -1251,5 +1251,16 @@
     "category": "早餐类",
     "_pinyin": "lü ji ying yang zao can you tiao guan ji dan rou chang zhu ji xiang",
     "_initials": "ljyyzcytgjdrczjx"
+  },
+  {
+    "id": 101,
+    "name": "测试",
+    "dishes": [
+      "222"
+    ],
+    "address": "222",
+    "category": "早餐类",
+    "_pinyin": "ce shi 2 2 2 2 2 2",
+    "_initials": "cs222222"
   }
 ]
