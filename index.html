@@ -141,14 +141,23 @@
     .search-input::placeholder { color: var(--ink-ghost); font-style: italic; }
     .search-input:focus { border-color: var(--gold); background: var(--cream); }
 
+    .filters-outer {
+      position: relative;
+      padding: 0 24px 14px;
+    }
+
     .filters {
       display: flex;
       gap: 6px;
-      padding: 0 24px 14px;
       overflow-x: auto;
       scrollbar-width: none;
+      flex-wrap: nowrap;
     }
     .filters::-webkit-scrollbar { display: none; }
+
+    .filters-toggle {
+      display: none;
+    }
 
     .filter-btn {
       flex-shrink: 0;
@@ -331,6 +340,34 @@
       header h1 { letter-spacing: 3px; }
       .grid { padding: 0 0 48px; }
       .card { padding: 20px 18px 16px; }
+
+      .filters {
+        overflow: hidden;
+        max-height: 36px;
+        transition: max-height 0.4s ease;
+      }
+      .filters.expanded {
+        flex-wrap: wrap;
+        max-height: 200px;
+      }
+
+      .filters-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 4px 0 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        color: var(--gold);
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .filters-toggle svg {
+        transition: transform 0.28s ease;
+      }
+      .filters-toggle.expanded svg { transform: rotate(180deg); }
     }
   </style>
 </head>
@@ -350,18 +387,26 @@
     </svg>
     <input type="text" class="search-input" id="searchInput" placeholder="搜索店名、菜品、地址…">
   </div>
-  <div class="filters" id="filterBtns">
-    <button class="filter-btn active" data-cat="全部">全部</button>
-    <button class="filter-btn" data-cat="汤羹类">汤羹类</button>
-    <button class="filter-btn" data-cat="面食类">面食类</button>
-    <button class="filter-btn" data-cat="包饺类">包饺类</button>
-    <button class="filter-btn" data-cat="烧烤类">烧烤类</button>
-    <button class="filter-btn" data-cat="卤味类">卤味类</button>
-    <button class="filter-btn" data-cat="正餐类">正餐类</button>
-    <button class="filter-btn" data-cat="小吃类">小吃类</button>
-    <button class="filter-btn" data-cat="甜品饮品">甜品饮品</button>
-    <button class="filter-btn" data-cat="早餐类">早餐类</button>
-    <button class="filter-btn" data-cat="火锅麻辣烫">火锅麻辣烫</button>
+  <div class="filters-outer">
+    <div class="filters" id="filterBtns">
+      <button class="filter-btn active" data-cat="全部">全部</button>
+      <button class="filter-btn" data-cat="汤羹类">汤羹类</button>
+      <button class="filter-btn" data-cat="面食类">面食类</button>
+      <button class="filter-btn" data-cat="包饺类">包饺类</button>
+      <button class="filter-btn" data-cat="烧烤类">烧烤类</button>
+      <button class="filter-btn" data-cat="卤味类">卤味类</button>
+      <button class="filter-btn" data-cat="正餐类">正餐类</button>
+      <button class="filter-btn" data-cat="小吃类">小吃类</button>
+      <button class="filter-btn" data-cat="甜品饮品">甜品饮品</button>
+      <button class="filter-btn" data-cat="早餐类">早餐类</button>
+      <button class="filter-btn" data-cat="火锅麻辣烫">火锅麻辣烫</button>
+    </div>
+    <button class="filters-toggle" id="filtersToggle" aria-label="展开分类" aria-expanded="false">
+      <svg width="20" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 20 14">
+        <polyline points="3,1 10,7 17,1" opacity="0.4"/>
+        <polyline points="3,7 10,13 17,7" opacity="1"/>
+      </svg>
+    </button>
   </div>
 </div>
 
@@ -396,19 +441,31 @@ let allData = [];
 let currentCat = '全部';
 let currentQ = '';
 
-function render() {
-  const q = currentQ.trim().toLowerCase();
-  const filtered = allData.filter(r => {
-    const catOk = currentCat === '全部' || r.category === currentCat;
-    const qOk = !q || [r.name, ...r.dishes, r.address, r.category]
-      .some(s => s.toLowerCase().includes(q));
-    return catOk && qOk;
-  });
+function doSearch(q) {
+  if (!q.trim()) return allData;
 
-  document.getElementById('resultsCount').textContent = `共 ${filtered.length} 家餐厅`;
+  const lq = q.trim().toLowerCase();
+
+  return allData.filter(r => {
+    // 中文文本直接匹配
+    const textMatch = [r.name, ...r.dishes, r.address, r.category]
+      .some(s => s.includes(lq));
+
+    // 拼音匹配（用户输入拼音如 "ji"、"chao"）
+    const pinyinMatch = r._pinyin.includes(lq) || r._initials.includes(lq);
+
+    return textMatch || pinyinMatch;
+  });
+}
+
+function render() {
+  let results = doSearch(currentQ);
+  if (currentCat !== '全部') results = results.filter(r => r.category === currentCat);
+
+  document.getElementById('resultsCount').textContent = `共 ${results.length} 家餐厅`;
 
   const grid = document.getElementById('grid');
-  if (filtered.length === 0) {
+  if (results.length === 0) {
     grid.innerHTML = `<div class="no-results">
       <div class="no-results-glyph">∅</div>
       <p>未找到匹配的餐厅，请换个关键词</p>
@@ -416,7 +473,7 @@ function render() {
     return;
   }
 
-  grid.innerHTML = filtered.map(r => {
+  grid.innerHTML = results.map(r => {
     const [tagCls, tagLabel] = TAG_CONFIG[r.category];
     const dishesHtml = r.dishes
       .map((d, i) => i < r.dishes.length - 1 ? `${d}<span class="dish-dot">·</span>` : d)
@@ -443,6 +500,14 @@ function render() {
 document.getElementById('searchInput').addEventListener('input', e => {
   currentQ = e.target.value;
   render();
+});
+
+document.getElementById('filtersToggle').addEventListener('click', () => {
+  const filterBtns = document.getElementById('filterBtns');
+  const toggle = document.getElementById('filtersToggle');
+  const expanded = filterBtns.classList.toggle('expanded');
+  toggle.classList.toggle('expanded', expanded);
+  toggle.setAttribute('aria-expanded', expanded);
 });
 
 document.getElementById('filterBtns').addEventListener('click', e => {
