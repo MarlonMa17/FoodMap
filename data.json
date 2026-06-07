@@ -1251,5 +1251,17 @@
     "category": "早餐类",
     "_pinyin": "lü ji ying yang zao can you tiao guan ji dan rou chang zhu ji xiang",
     "_initials": "ljyyzcytgjdrczjx"
+  },
+  {
+    "id": 101,
+    "name": "农家地锅",
+    "dishes": [
+      "地锅",
+      "烤串"
+    ],
+    "address": "金明大道与复兴大道交叉口",
+    "category": "烧烤类",
+    "_pinyin": "nong jia di guo di guo kao chuan jin ming da dao yu fu xing da dao jiao cha kou",
+    "_initials": "njdgdgkcjmddyfxddjck"
   }
 ]
