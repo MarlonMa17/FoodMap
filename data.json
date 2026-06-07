@@ -1296,5 +1296,16 @@
     "category": "炒菜类",
     "_pinyin": "lan xiang zi kao yu chao rou xing guang tian di ， wan da",
     "_initials": "lxzkycrxgtd，wd"
+  },
+  {
+    "id": 105,
+    "name": "米村拌饭",
+    "dishes": [
+      "鱿鱼"
+    ],
+    "address": "万达",
+    "category": "炒菜类",
+    "_pinyin": "mi cun ban fan you yu wan da",
+    "_initials": "mcbfyywd"
   }
 ]
