@@ -118,6 +118,7 @@
       position: relative;
       display: flex;
       align-items: center;
+      gap: 10px;
     }
     .search-icon {
       position: absolute;
@@ -126,7 +127,8 @@
       pointer-events: none;
     }
     .search-input {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
       padding: 10px 18px 10px 44px;
       border: 1.5px solid var(--rule);
       border-radius: 2px;
@@ -371,6 +373,298 @@
       border-top: 1px solid var(--rule);
     }
 
+    /* ── SETTINGS BUTTON ── */
+    .btn-settings {
+      flex-shrink: 0;
+      position: relative;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--rule);
+      background: transparent;
+      color: var(--ink-ghost);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-settings:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-settings.connected { border-color: #4caf50; color: #4caf50; }
+    .btn-settings.connected::after {
+      content: '';
+      position: absolute;
+      top: -4px; right: -4px;
+      width: 8px; height: 8px;
+      background: #4caf50;
+      border-radius: 50%;
+      border: 2px solid var(--cream);
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 84px; right: 20px;
+      padding: 9px 15px;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      z-index: 300;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      pointer-events: none;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.syncing { background: rgba(30,18,10,0.85); color: var(--gold-light); }
+    .toast.success { background: rgba(20,60,20,0.88); color: #a5d6a7; }
+    .toast.error   { background: rgba(160,30,20,0.92); color: #ffcdd2; pointer-events: auto; cursor: pointer; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .toast.syncing .spin { animation: spin 0.9s linear infinite; display: inline-block; }
+
+    /* ── FORM HINT LINK ── */
+    .form-hint a { color: var(--gold); }
+
+    /* ── DISCONNECT BUTTON ── */
+    .btn-disconnect {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      padding: 8px;
+      border: 1px solid rgba(192,57,43,0.35);
+      background: transparent;
+      color: #c0392b;
+      font-family: inherit;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-radius: 1px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s, border-color 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .btn-disconnect:hover { background: rgba(192,57,43,0.08); border-color: #c0392b; }
+
+    /* ── ADD BUTTON ── */
+    .btn-add {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-add:hover { background: var(--gold); color: var(--cream); }
+
+    /* ── CARD ACTION BUTTONS ── */
+    .card-edit, .card-delete {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink-ghost);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .card-delete { top: 10px; right: 12px; }
+    .card-edit   { top: 10px; left:  12px; }
+    .card:hover .card-edit,
+    .card:hover .card-delete { opacity: 1; }
+    .card-edit:hover   { background: rgba(184,134,11,0.12); color: var(--gold);   border-color: rgba(184,134,11,0.4); }
+    .card-delete:hover { background: rgba(192,57,43,0.12);  color: #c0392b; border-color: rgba(192,57,43,0.4); }
+
+    /* ── CONFIRM DIALOG ── */
+    .confirm-dialog {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-top: 3px solid #c0392b;
+      padding: 28px 24px 22px;
+      width: min(300px, calc(100vw - 40px));
+      text-align: center;
+      transform: translateY(14px);
+      transition: transform 0.25s ease;
+    }
+    .modal-overlay.open .confirm-dialog { transform: translateY(0); }
+    .confirm-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #c0392b;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .confirm-name {
+      font-family: 'Playfair Display', 'Noto Serif SC', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .confirm-sub {
+      font-size: 0.72rem;
+      color: var(--ink-ghost);
+      font-style: italic;
+      margin-bottom: 22px;
+    }
+    .confirm-actions { display: flex; gap: 10px; }
+    .btn-danger {
+      flex: 1;
+      padding: 9px 12px;
+      border: 1.5px solid #c0392b;
+      background: #c0392b;
+      color: white;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 1px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .btn-danger:hover { background: #a93226; border-color: #a93226; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 18, 10, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: auto; }
+    .modal {
+      background: var(--cream);
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--gold);
+      padding: 32px 28px 28px;
+      width: min(460px, 100%);
+      max-height: calc(100svh - 40px);
+      overflow-y: auto;
+      position: relative;
+      transform: translateY(14px);
+      transition: transform 0.25s ease;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 24px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 28px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      color: var(--ink-ghost);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 2px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.2s, background 0.2s;
+    }
+    .modal-close:hover { color: var(--ink); background: var(--parchment); }
+    .form-row { margin-bottom: 18px; }
+    .form-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .form-input, .form-select {
+      width: 100%;
+      border: 1.5px solid var(--rule);
+      background: var(--parchment);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.9rem;
+      padding: 9px 12px;
+      outline: none;
+      border-radius: 1px;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-select:focus { border-color: var(--gold); }
+    .form-input::placeholder { color: var(--ink-ghost); font-style: italic; }
+    .form-hint { font-size: 0.7rem; color: var(--ink-ghost); margin-top: 5px; font-style: italic; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 26px; }
+    .btn-cancel {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink-soft);
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border-radius: 1px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-cancel:hover { border-color: var(--ink-soft); color: var(--ink); }
+    .btn-submit {
+      flex: 2;
+      padding: 10px;
+      border: 1.5px solid var(--gold);
+      background: var(--gold);
+      color: #FFF8E8;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 1px;
+      border-radius: 1px;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-submit:hover { background: var(--ink); border-color: var(--ink); }
+
     @media (max-width: 640px) {
       header h1 { letter-spacing: 3px; }
       .grid { padding: 0 0 48px; }
@@ -421,6 +715,18 @@
       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1 1 0 0 0-.115-.099zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
     </svg>
     <input type="text" class="search-input" id="searchInput" placeholder="搜索店名、菜品、地址…">
+    <button class="btn-add" id="openAddModal">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" viewBox="0 0 12 12">
+        <line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/>
+      </svg>
+      添加
+    </button>
+    <button class="btn-settings" id="openSettings" title="配置 GitHub 同步" aria-label="设置">
+      <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 20 20">
+        <circle cx="10" cy="10" r="3"/>
+        <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
   </div>
   <div class="filters-outer">
     <div class="filters" id="filterBtns">
@@ -458,6 +764,92 @@
 
 <footer>门口的老头严选 &ensp;·&ensp; 仅供参考</footer>
 
+<div class="toast" id="toast"></div>
+
+<div class="modal-overlay" id="confirmOverlay">
+  <div class="confirm-dialog">
+    <div class="confirm-label">删 除</div>
+    <div class="confirm-name" id="confirmName"></div>
+    <div class="confirm-sub">此操作不可撤销</div>
+    <div class="confirm-actions">
+      <button type="button" class="btn-cancel" id="confirmCancel">取消</button>
+      <button type="button" class="btn-danger" id="confirmOk">确认删除</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="settingsOverlay" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="modal">
+    <button class="modal-close" id="settingsClose" aria-label="关闭">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 13 13">
+        <line x1="1" y1="1" x2="12" y2="12"/><line x1="12" y1="1" x2="1" y2="12"/>
+      </svg>
+    </button>
+    <div class="modal-title" id="settingsTitle">GitHub 同 步</div>
+    <div class="form-row">
+      <label class="form-label" for="s-repo">GitHub 仓库</label>
+      <input class="form-input" type="text" id="s-repo" placeholder="用户名/仓库名" autocomplete="off" spellcheck="false">
+      <div class="form-hint">例如：mahonghao1995/FoodMap</div>
+    </div>
+    <div class="form-row">
+      <label class="form-label" for="s-token">Personal Access Token</label>
+      <input class="form-input" type="password" id="s-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+      <div class="form-hint">需要 <strong>repo</strong> 读写权限 &ensp;·&ensp; <a href="https://github.com/settings/tokens/new?scopes=repo&description=FoodMap" target="_blank" rel="noopener">点此创建 Token</a></div>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel" id="settingsCancel">取消</button>
+      <button type="button" class="btn-submit" id="settingsSave">保存并连接</button>
+    </div>
+    <button class="btn-disconnect" id="settingsDisconnect" style="display:none">断开同步</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="关闭">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 13 13">
+        <line x1="1" y1="1" x2="12" y2="12"/><line x1="12" y1="1" x2="1" y2="12"/>
+      </svg>
+    </button>
+    <div class="modal-title" id="modalTitle">添 加 餐 厅</div>
+    <form id="addForm" novalidate>
+      <div class="form-row">
+        <label class="form-label" for="f-name">店名</label>
+        <input class="form-input" type="text" id="f-name" placeholder="餐厅名称" autocomplete="off">
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-dishes">推荐菜品</label>
+        <input class="form-input" type="text" id="f-dishes" placeholder="菜品1，菜品2，菜品3" autocomplete="off">
+        <div class="form-hint">多个菜品以逗号或顿号分隔</div>
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-address">地址</label>
+        <input class="form-input" type="text" id="f-address" placeholder="餐厅位置" autocomplete="off">
+      </div>
+      <div class="form-row">
+        <label class="form-label" for="f-category">分类</label>
+        <select class="form-select" id="f-category">
+          <option value="" disabled selected>请选择分类</option>
+          <option value="早餐类">早餐类</option>
+          <option value="烧烤类">烧烤类</option>
+          <option value="火锅麻辣烫">火锅麻辣烫</option>
+          <option value="炒菜类">炒菜类</option>
+          <option value="汤羹类">汤羹类</option>
+          <option value="面食类">面食类</option>
+          <option value="包饺类">包饺类</option>
+          <option value="小吃类">小吃类</option>
+          <option value="卤味类">卤味类</option>
+          <option value="甜品饮品">甜品饮品</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-cancel" id="cancelAdd">取消</button>
+        <button type="submit" class="btn-submit">添加餐厅</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <button class="back-to-top" id="backToTop" aria-label="回到顶部">
   <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 16 16">
     <polyline points="3,11 8,5 13,11"/>
@@ -465,6 +857,90 @@
 </button>
 
 <script>
+// ── Pinyin (lazy-loaded, optional) ──
+let pinyinLib = null;
+import('https://esm.sh/pinyin-pro@3').then(m => { pinyinLib = m; }).catch(() => {});
+
+// ── Base64 helpers for GitHub API ──
+function toBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  bytes.forEach(b => bin += String.fromCharCode(b));
+  return btoa(bin);
+}
+function fromBase64(b64) {
+  const bin = atob(b64.replace(/\s/g, ''));
+  const buf = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(buf);
+}
+
+// ── GitHub config ──
+function getGitHubConfig() {
+  const token = localStorage.getItem('foodmap_gh_token');
+  const full  = localStorage.getItem('foodmap_gh_repo'); // "owner/repo"
+  if (!token || !full || !full.includes('/')) return null;
+  const slash = full.indexOf('/');
+  return { token, owner: full.slice(0, slash), repo: full.slice(slash + 1) };
+}
+
+// ── Toast ──
+let toastTimer = null;
+function showToast(type, msg) {
+  const el = document.getElementById('toast');
+  clearTimeout(toastTimer);
+  const icons = {
+    syncing: '<span class="spin">⟳</span>',
+    success: '✓',
+    error:   '✕ ' + msg + ' &ensp;(点击重试)',
+  };
+  el.innerHTML = (type !== 'error' ? icons[type] + ' ' + msg : icons[type]);
+  el.className = `toast ${type} show`;
+  if (type === 'success') toastTimer = setTimeout(() => { el.className = 'toast'; }, 2800);
+  if (type === 'error') el.onclick = () => syncToGitHub();
+}
+function hideToast() { document.getElementById('toast').className = 'toast'; }
+
+// ── GitHub sync ──
+let ghSha = null;
+
+async function syncToGitHub() {
+  const cfg = getGitHubConfig();
+  if (!cfg) { localStorage.setItem('foodmap_data', JSON.stringify(allData)); return; }
+
+  showToast('syncing', '正在同步到 GitHub…');
+  try {
+    // GET current SHA (also verifies token)
+    const getRes = await fetch(
+      `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/data.json`,
+      { headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json' } }
+    );
+    if (!getRes.ok) throw new Error(`${getRes.status}`);
+    const file = await getRes.json();
+    ghSha = file.sha;
+
+    // PUT updated content
+    const putRes = await fetch(
+      `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/data.json`,
+      {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: '更新餐厅数据', content: toBase64(JSON.stringify(allData, null, 2)), sha: ghSha })
+      }
+    );
+    if (!putRes.ok) throw new Error(`${putRes.status}`);
+    const updated = await putRes.json();
+    ghSha = updated.content.sha;
+    localStorage.setItem('foodmap_data', JSON.stringify(allData));
+    showToast('success', '已同步 · 约1分钟后页面更新');
+  } catch(e) {
+    ghSha = null;
+    localStorage.setItem('foodmap_data', JSON.stringify(allData));
+    showToast('error', `同步失败 (${e.message})`);
+  }
+}
+
+// ── TAG_CONFIG ──
 const TAG_CONFIG = {
   '早餐类':    ['tag-breakfast', '早 餐'],
   '烧烤类':    ['tag-bbq',       '烧 烤'],
@@ -478,23 +954,17 @@ const TAG_CONFIG = {
   '甜品饮品':  ['tag-sweet',     '甜 品'],
 };
 
-let allData = [];
+let allData    = [];
 let currentCat = '全部';
-let currentQ = '';
+let currentQ   = '';
+let editingId  = null;
 
 function doSearch(q) {
   if (!q.trim()) return allData;
-
   const lq = q.trim().toLowerCase();
-
   return allData.filter(r => {
-    // 中文文本直接匹配
-    const textMatch = [r.name, ...r.dishes, r.address, r.category]
-      .some(s => s.includes(lq));
-
-    // 拼音匹配（用户输入拼音如 "ji"、"chao"）
-    const pinyinMatch = r._pinyin.includes(lq) || r._initials.includes(lq);
-
+    const textMatch = [r.name, ...r.dishes, r.address, r.category].some(s => s.includes(lq));
+    const pinyinMatch = (r._pinyin || '').includes(lq) || (r._initials || '').includes(lq);
     return textMatch || pinyinMatch;
   });
 }
@@ -502,25 +972,27 @@ function doSearch(q) {
 function render() {
   let results = doSearch(currentQ);
   if (currentCat !== '全部') results = results.filter(r => r.category === currentCat);
-
   document.getElementById('resultsCount').textContent = `共 ${results.length} 家餐厅`;
-
   const grid = document.getElementById('grid');
   if (results.length === 0) {
-    grid.innerHTML = `<div class="no-results">
-      <div class="no-results-glyph">∅</div>
-      <p>未找到匹配的餐厅，请换个关键词</p>
-    </div>`;
+    grid.innerHTML = `<div class="no-results"><div class="no-results-glyph">∅</div><p>未找到匹配的餐厅，请换个关键词</p></div>`;
     return;
   }
-
   grid.innerHTML = results.map(r => {
-    const [tagCls, tagLabel] = TAG_CONFIG[r.category];
-    const dishesHtml = r.dishes
-      .map((d, i) => i < r.dishes.length - 1 ? `${d}<span class="dish-dot">·</span>` : d)
-      .join('');
+    const [tagCls, tagLabel] = TAG_CONFIG[r.category] || ['', r.category];
+    const dishesHtml = r.dishes.map((d, i) => i < r.dishes.length - 1 ? `${d}<span class="dish-dot">·</span>` : d).join('');
     const numStr = String(r.id).padStart(2, '0');
     return `<div class="card">
+      <button class="card-delete" data-id="${r.id}" aria-label="删除">
+        <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 10 10">
+          <line x1="1" y1="1" x2="9" y2="9"/><line x1="9" y1="1" x2="1" y2="9"/>
+        </svg>
+      </button>
+      <button class="card-edit" data-id="${r.id}" aria-label="编辑">
+        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 12 12">
+          <path d="M8.5 1.5L10.5 3.5L4 10H2V8L8.5 1.5Z"/>
+        </svg>
+      </button>
       <div class="card-meta">
         <span class="card-num">No.${numStr}</span>
         <span class="card-tag ${tagCls}">${tagLabel}</span>
@@ -538,19 +1010,14 @@ function render() {
   }).join('');
 }
 
-document.getElementById('searchInput').addEventListener('input', e => {
-  currentQ = e.target.value;
-  render();
-});
-
+// ── Search & filter ──
+document.getElementById('searchInput').addEventListener('input', e => { currentQ = e.target.value; render(); });
 document.getElementById('filtersToggle').addEventListener('click', () => {
-  const filterBtns = document.getElementById('filterBtns');
-  const toggle = document.getElementById('filtersToggle');
-  const expanded = filterBtns.classList.toggle('expanded');
-  toggle.classList.toggle('expanded', expanded);
-  toggle.setAttribute('aria-expanded', expanded);
+  const fb = document.getElementById('filterBtns'), tg = document.getElementById('filtersToggle');
+  const exp = fb.classList.toggle('expanded');
+  tg.classList.toggle('expanded', exp);
+  tg.setAttribute('aria-expanded', exp);
 });
-
 document.getElementById('filterBtns').addEventListener('click', e => {
   const btn = e.target.closest('.filter-btn');
   if (!btn) return;
@@ -560,26 +1027,205 @@ document.getElementById('filterBtns').addEventListener('click', e => {
   render();
 });
 
+// ── Back to top ──
 const backToTop = document.getElementById('backToTop');
-window.addEventListener('scroll', () => {
-  backToTop.classList.toggle('visible', window.scrollY > 300);
-}, { passive: true });
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+window.addEventListener('scroll', () => { backToTop.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+backToTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+// ── Confirm dialog ──
+let confirmResolve = null;
+function showConfirm(name) {
+  return new Promise(resolve => {
+    confirmResolve = resolve;
+    document.getElementById('confirmName').textContent = `「${name}」`;
+    document.getElementById('confirmOverlay').classList.add('open');
+  });
+}
+function resolveConfirm(yes) {
+  document.getElementById('confirmOverlay').classList.remove('open');
+  if (confirmResolve) { confirmResolve(yes); confirmResolve = null; }
+}
+document.getElementById('confirmOk').addEventListener('click',     () => resolveConfirm(true));
+document.getElementById('confirmCancel').addEventListener('click', () => resolveConfirm(false));
+document.getElementById('confirmOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('confirmOverlay')) resolveConfirm(false);
 });
 
-fetch('data.json')
-  .then(r => r.json())
-  .then(data => {
-    allData = data;
+// ── Card actions (edit / delete) ──
+document.getElementById('grid').addEventListener('click', async e => {
+  const editBtn = e.target.closest('.card-edit');
+  if (editBtn) {
+    const entry = allData.find(r => r.id === Number(editBtn.dataset.id));
+    if (!entry) return;
+    editingId = entry.id;
+    document.getElementById('f-name').value     = entry.name;
+    document.getElementById('f-dishes').value   = entry.dishes.join('，');
+    document.getElementById('f-address').value  = entry.address;
+    document.getElementById('f-category').value = entry.category;
+    document.getElementById('modalTitle').textContent          = '编 辑 餐 厅';
+    document.querySelector('#addForm .btn-submit').textContent = '保存修改';
+    openModal();
+    return;
+  }
+  const delBtn = e.target.closest('.card-delete');
+  if (!delBtn) return;
+  const delId = Number(delBtn.dataset.id);
+  const entry = allData.find(r => r.id === delId);
+  if (!await showConfirm(entry?.name || '')) return;
+  allData = allData
+    .filter(r => r.id !== delId)
+    .map((r, i) => ({ ...r, id: i + 1 }));
+  render();
+  syncToGitHub();
+});
+
+// ── Add modal ──
+const overlay = document.getElementById('modalOverlay');
+const addForm = document.getElementById('addForm');
+function openModal()  { overlay.classList.add('open'); document.getElementById('f-name').focus(); }
+function closeModal() {
+  overlay.classList.remove('open');
+  addForm.reset();
+  if (editingId !== null) {
+    editingId = null;
+    document.getElementById('modalTitle').textContent          = '添 加 餐 厅';
+    document.querySelector('#addForm .btn-submit').textContent = '添加餐厅';
+  }
+}
+document.getElementById('openAddModal').addEventListener('click', openModal);
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('cancelAdd').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+addForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const name      = document.getElementById('f-name').value.trim();
+  const dishesRaw = document.getElementById('f-dishes').value.trim();
+  const address   = document.getElementById('f-address').value.trim();
+  const category  = document.getElementById('f-category').value;
+  if (!name || !dishesRaw || !address || !category) return;
+  const dishes    = dishesRaw.split(/[，,、；;]/).map(s => s.trim()).filter(Boolean);
+  const origEntry = editingId !== null ? allData.find(r => r.id === editingId) : null;
+  const allText   = [name, ...dishes, address].join('');
+  const _pinyin   = pinyinLib ? pinyinLib.pinyin(allText, { toneType: 'none', separator: ' ' })                    : (origEntry?._pinyin   || '');
+  const _initials = pinyinLib ? pinyinLib.pinyin(allText, { pattern: 'first', toneType: 'none', separator: '' }) : (origEntry?._initials || '');
+  if (editingId !== null) {
+    const idx = allData.findIndex(r => r.id === editingId);
+    if (idx >= 0) allData[idx] = { ...allData[idx], name, dishes, address, category, _pinyin, _initials };
     render();
-  })
-  .catch(() => {
-    document.getElementById('grid').innerHTML = `<div class="no-results">
-      <div class="no-results-glyph">!</div>
-      <p>无法加载数据，请通过 Live Server 打开此页面</p>
-    </div>`;
-  });
+    closeModal();
+    syncToGitHub();
+  } else {
+    const newId = allData.length + 1;
+    allData.push({ id: newId, name, dishes, address, category, _pinyin, _initials });
+    currentCat = '全部';
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === '全部'));
+    render();
+    closeModal();
+    syncToGitHub();
+    requestAnimationFrame(() => {
+      const card = document.querySelector(`[data-id="${newId}"]`)?.closest('.card');
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+});
+
+// ── Settings modal ──
+const settingsOverlay = document.getElementById('settingsOverlay');
+function openSettings() {
+  document.getElementById('s-repo').value  = localStorage.getItem('foodmap_gh_repo')  || '';
+  document.getElementById('s-token').value = localStorage.getItem('foodmap_gh_token') || '';
+  const connected = !!getGitHubConfig();
+  document.getElementById('settingsDisconnect').style.display = connected ? '' : 'none';
+  settingsOverlay.classList.add('open');
+}
+function closeSettings() { settingsOverlay.classList.remove('open'); }
+
+document.getElementById('openSettings').addEventListener('click', openSettings);
+document.getElementById('settingsClose').addEventListener('click', closeSettings);
+document.getElementById('settingsCancel').addEventListener('click', closeSettings);
+settingsOverlay.addEventListener('click', e => { if (e.target === settingsOverlay) closeSettings(); });
+
+document.getElementById('settingsSave').addEventListener('click', () => {
+  const repo  = document.getElementById('s-repo').value.trim();
+  const token = document.getElementById('s-token').value.trim();
+  if (!repo || !repo.includes('/') || !token) { alert('请填写完整的仓库名和 Token'); return; }
+  localStorage.setItem('foodmap_gh_repo',  repo);
+  localStorage.setItem('foodmap_gh_token', token);
+  updateSettingsBtn();
+  closeSettings();
+  syncToGitHub(); // first sync to verify + push current state
+});
+
+document.getElementById('settingsDisconnect').addEventListener('click', () => {
+  if (!confirm('断开 GitHub 同步？已有的本地数据不会丢失。')) return;
+  localStorage.removeItem('foodmap_gh_token');
+  localStorage.removeItem('foodmap_gh_repo');
+  updateSettingsBtn();
+  closeSettings();
+  hideToast();
+});
+
+function updateSettingsBtn() {
+  document.getElementById('openSettings').classList.toggle('connected', !!getGitHubConfig());
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeSettings(); resolveConfirm(false); } });
+
+// ── Load data ──
+async function loadData() {
+  const cfg = getGitHubConfig();
+
+  if (cfg) {
+    // GitHub mode: always fetch fresh from API, fall back to cache only on error
+    try {
+      const res = await fetch(
+        `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/data.json`,
+        { headers: { Authorization: `Bearer ${cfg.token}`, Accept: 'application/vnd.github+json' } }
+      );
+      if (!res.ok) throw new Error(res.status);
+      const file = await res.json();
+      ghSha   = file.sha;
+      allData = JSON.parse(fromBase64(file.content));
+      localStorage.setItem('foodmap_data', JSON.stringify(allData));
+      render();
+      updateSettingsBtn();
+      return;
+    } catch {}
+
+    // API failed — use local cache as fallback
+    try {
+      const cached = JSON.parse(localStorage.getItem('foodmap_data'));
+      if (Array.isArray(cached) && cached.length) { allData = cached; render(); }
+    } catch {}
+
+  } else {
+    // No GitHub config: always fetch the static file fresh (bypass browser cache)
+    // localStorage is NOT used as primary — it may be stale from a previous visit
+    try {
+      const res = await fetch(`data.json?t=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(res.status);
+      const base = await res.json();
+
+      // Migrate old-style localStorage additions/deletions if present
+      const oldDel = new Set(JSON.parse(localStorage.getItem('foodmap_deleted') || '[]'));
+      const oldAdd = JSON.parse(localStorage.getItem('foodmap_added') || '[]');
+      allData = [...base.filter(r => !oldDel.has(r.id)), ...oldAdd];
+      render();
+    } catch {
+      // Network unavailable — try local cache as last resort
+      try {
+        const cached = JSON.parse(localStorage.getItem('foodmap_data'));
+        if (Array.isArray(cached) && cached.length) { allData = cached; render(); return; }
+      } catch {}
+      document.getElementById('grid').innerHTML = `<div class="no-results"><div class="no-results-glyph">!</div><p>无法加载数据，请通过 Live Server 打开此页面</p></div>`;
+    }
+  }
+
+  updateSettingsBtn();
+}
+
+loadData();
 </script>
 </body>
 </html>
