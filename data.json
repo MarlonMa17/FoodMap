@@ -1251,5 +1251,16 @@
     "category": "早餐类",
     "_pinyin": "lü ji ying yang zao can you tiao guan ji dan rou chang zhu ji xiang",
     "_initials": "ljyyzcytgjdrczjx"
+  },
+  {
+    "id": 1780852117452,
+    "name": "22",
+    "dishes": [
+      "22"
+    ],
+    "address": "1111",
+    "category": "早餐类",
+    "_pinyin": "2 2 2 2 1 1 1 1",
+    "_initials": "22221111"
   }
 ]
