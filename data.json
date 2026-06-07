@@ -1263,5 +1263,16 @@
     "category": "烧烤类",
     "_pinyin": "nong jia di guo di guo kao chuan jin ming da dao yu fu xing da dao jiao cha kou",
     "_initials": "njdgdgkcjmddyfxddjck"
+  },
+  {
+    "id": 102,
+    "name": "麦禾炉域",
+    "dishes": [
+      "菠萝包"
+    ],
+    "address": "夷山大街北段",
+    "category": "甜品饮品",
+    "_pinyin": "",
+    "_initials": ""
   }
 ]
