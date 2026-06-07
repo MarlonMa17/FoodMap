@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开封美食地图</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Serif+SC:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink:        #1E120A;
+      --ink-soft:   #6B5040;
+      --ink-ghost:  #A08878;
+      --parchment:  #FAF6EF;
+      --cream:      #FFFDF9;
+      --gold:       #B8860B;
+      --gold-light: #E8C97A;
+      --gold-pale:  #F7EDD0;
+      --rule:       #E0D4C0;
+      --header-bg:  #1E120A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Serif SC', 'PingFang SC', 'Microsoft YaHei', serif;
+      background: var(--parchment);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--header-bg);
+      padding: 52px 24px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before, header::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 0; bottom: 0;
+      transform: translateX(-50%);
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(184,134,11,0.3), transparent);
+    }
+
+    .header-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .header-ornament::before, .header-ornament::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .header-ornament::after {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', 'Noto Serif SC', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #F5EDD8;
+      letter-spacing: 6px;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .header-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 16px auto;
+      color: var(--gold);
+    }
+    .header-divider span { font-size: 0.6rem; opacity: 0.7; letter-spacing: 2px; }
+    .header-divider::before, .header-divider::after {
+      content: '';
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    header p {
+      color: #B09070;
+      font-size: 0.82rem;
+      letter-spacing: 3px;
+      font-style: italic;
+    }
+
+    /* ── CONTROLS ── */
+    .controls {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      box-shadow: 0 2px 16px rgba(30,18,10,0.07);
+    }
+
+    .search-wrap {
+      padding: 16px 24px 12px;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-icon {
+      position: absolute;
+      left: 38px;
+      color: var(--ink-ghost);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 10px 18px 10px 44px;
+      border: 1.5px solid var(--rule);
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: var(--parchment);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .search-input::placeholder { color: var(--ink-ghost); font-style: italic; }
+    .search-input:focus { border-color: var(--gold); background: var(--cream); }
+
+    .filters {
+      display: flex;
+      gap: 6px;
+      padding: 0 24px 14px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .filters::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+      flex-shrink: 0;
+      padding: 5px 15px;
+      border: 1px solid var(--rule);
+      border-radius: 1px;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .filter-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #FFF8E8;
+      font-weight: 600;
+    }
+
+    /* ── RESULTS INFO ── */
+    .results-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 28px 10px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .results-bar::before, .results-bar::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+    .results-count {
+      font-size: 0.72rem;
+      color: var(--ink-ghost);
+      letter-spacing: 2px;
+      white-space: nowrap;
+      font-style: italic;
+    }
+
+    /* ── GRID ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      padding: 0 24px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    /* ── MENU ITEM CARD ── */
+    .card {
+      background: var(--cream);
+      padding: 24px 26px 20px;
+      position: relative;
+      transition: background 0.2s;
+    }
+    .card:hover { background: #FFFEF8; }
+    .card:hover .card-name { color: var(--gold); }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .card-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.72rem;
+      color: var(--ink-ghost);
+      letter-spacing: 1px;
+    }
+    .card-tag {
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      padding: 2px 10px;
+      border: 1px solid currentColor;
+      border-radius: 0;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', 'Noto Serif SC', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+      letter-spacing: 1px;
+    }
+
+    .card-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .card-dishes {
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+    .card-dishes .dish-dot {
+      color: var(--gold);
+      margin: 0 5px;
+      font-style: normal;
+    }
+
+    .card-address {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--ink-ghost);
+      letter-spacing: 0.5px;
+    }
+    .card-address-icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* tag category colors */
+    .tag-soup      { color: #9B2020; }
+    .tag-noodle    { color: #8B6000; }
+    .tag-bun       { color: #1A6040; }
+    .tag-bbq       { color: #A03010; }
+    .tag-braised   { color: #5C2D8A; }
+    .tag-meal      { color: #1A3A6A; }
+    .tag-snack     { color: #8A1A50; }
+    .tag-sweet     { color: #0A6070; }
+    .tag-breakfast { color: #3A5A10; }
+    .tag-hotpot    { color: #8A1A1A; }
+
+    /* ── NO RESULTS ── */
+    .no-results {
+      grid-column: 1 / -1;
+      background: var(--cream);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .no-results-glyph {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+    }
+    .no-results p {
+      color: var(--ink-ghost);
+      font-style: italic;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.72rem;
+      color: var(--ink-ghost);
+      letter-spacing: 2px;
+      font-style: italic;
+      border-top: 1px solid var(--rule);
+    }
+
+    @media (max-width: 640px) {
+      header h1 { letter-spacing: 3px; }
+      .grid { padding: 0 0 48px; }
+      .card { padding: 20px 18px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-ornament">精选推荐</div>
+  <h1>開封美食地圖</h1>
+  <div class="header-divider"><span>✦</span></div>
+  <p>开封 &ensp;·&ensp; 百家老字号 &ensp;·&ensp; 精选</p>
+</header>
+
+<div class="controls">
+  <div class="search-wrap">
+    <svg class="search-icon" width="15" height="15" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85a1 1 0 0 0-.115-.099zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+    </svg>
+    <input type="text" class="search-input" id="searchInput" placeholder="搜索店名、菜品、地址…">
+  </div>
+  <div class="filters" id="filterBtns">
+    <button class="filter-btn active" data-cat="全部">全部</button>
+    <button class="filter-btn" data-cat="汤羹类">汤羹类</button>
+    <button class="filter-btn" data-cat="面食类">面食类</button>
+    <button class="filter-btn" data-cat="包饺类">包饺类</button>
+    <button class="filter-btn" data-cat="烧烤类">烧烤类</button>
+    <button class="filter-btn" data-cat="卤味类">卤味类</button>
+    <button class="filter-btn" data-cat="正餐类">正餐类</button>
+    <button class="filter-btn" data-cat="小吃类">小吃类</button>
+    <button class="filter-btn" data-cat="甜品饮品">甜品饮品</button>
+    <button class="filter-btn" data-cat="早餐类">早餐类</button>
+    <button class="filter-btn" data-cat="火锅麻辣烫">火锅麻辣烫</button>
+  </div>
+</div>
+
+<div class="results-bar">
+  <span class="results-count" id="resultsCount">共 100 家餐厅</span>
+</div>
+
+<div class="grid" id="grid">
+  <div class="no-results">
+    <div class="no-results-glyph">⌛</div>
+    <p>正在加载…</p>
+  </div>
+</div>
+
+<footer>门口的老头严选 &ensp;·&ensp; 仅供参考</footer>
+
+<script>
+const TAG_CONFIG = {
+  '汤羹类':    ['tag-soup',      '汤 羹'],
+  '面食类':    ['tag-noodle',    '面 食'],
+  '包饺类':    ['tag-bun',       '包 饺'],
+  '烧烤类':    ['tag-bbq',       '烧 烤'],
+  '卤味类':    ['tag-braised',   '卤 味'],
+  '正餐类':    ['tag-meal',      '正 餐'],
+  '小吃类':    ['tag-snack',     '小 吃'],
+  '甜品饮品':  ['tag-sweet',     '甜 品'],
+  '早餐类':    ['tag-breakfast', '早 餐'],
+  '火锅麻辣烫':['tag-hotpot',    '火 锅'],
+};
+
+let allData = [];
+let currentCat = '全部';
+let currentQ = '';
+
+function render() {
+  const q = currentQ.trim().toLowerCase();
+  const filtered = allData.filter(r => {
+    const catOk = currentCat === '全部' || r.category === currentCat;
+    const qOk = !q || [r.name, ...r.dishes, r.address, r.category]
+      .some(s => s.toLowerCase().includes(q));
+    return catOk && qOk;
+  });
+
+  document.getElementById('resultsCount').textContent = `共 ${filtered.length} 家餐厅`;
+
+  const grid = document.getElementById('grid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="no-results">
+      <div class="no-results-glyph">∅</div>
+      <p>未找到匹配的餐厅，请换个关键词</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(r => {
+    const [tagCls, tagLabel] = TAG_CONFIG[r.category];
+    const dishesHtml = r.dishes
+      .map((d, i) => i < r.dishes.length - 1 ? `${d}<span class="dish-dot">·</span>` : d)
+      .join('');
+    const numStr = String(r.id).padStart(2, '0');
+    return `<div class="card">
+      <div class="card-meta">
+        <span class="card-num">No.${numStr}</span>
+        <span class="card-tag ${tagCls}">${tagLabel}</span>
+      </div>
+      <div class="card-name">${r.name}</div>
+      <div class="card-rule"></div>
+      <div class="card-dishes">${dishesHtml}</div>
+      <div class="card-address">
+        <svg class="card-address-icon" width="11" height="14" fill="currentColor" viewBox="0 0 12 16">
+          <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7.5C4.62 7.5 3.5 6.38 3.5 5S4.62 2.5 6 2.5 8.5 3.62 8.5 5 7.38 7.5 6 7.5z"/>
+        </svg>
+        <span>${r.address}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('searchInput').addEventListener('input', e => {
+  currentQ = e.target.value;
+  render();
+});
+
+document.getElementById('filterBtns').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  currentCat = btn.dataset.cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+});
+
+fetch('data.json')
+  .then(r => r.json())
+  .then(data => {
+    allData = data;
+    render();
+  })
+  .catch(() => {
+    document.getElementById('grid').innerHTML = `<div class="no-results">
+      <div class="no-results-glyph">!</div>
+      <p>无法加载数据，请通过 Live Server 打开此页面</p>
+    </div>`;
+  });
+</script>
+</body>
+</html>
