@@ -1296,5 +1296,16 @@
     "category": "火锅麻辣烫",
     "_pinyin": "",
     "_initials": ""
+  },
+  {
+    "id": 105,
+    "name": "张先生烤肉",
+    "dishes": [
+      "198套餐"
+    ],
+    "address": "新河大东门对面",
+    "category": "烧烤类",
+    "_pinyin": "zhang xian sheng kao rou 1 9 8 tao can xin he da dong men dui mian",
+    "_initials": "zxskr198tcxhddmdm"
   }
 ]
