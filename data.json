@@ -495,7 +495,7 @@
       "米饭"
     ],
     "address": "西坡街居民楼",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "xi po jie yi pin xiang kou wan jie cai rou su rou kou wan mi fan xi po jie ju min lou",
     "_initials": "xpjypxkwjcrsrkwmfxpjjml"
   },
@@ -507,7 +507,7 @@
       "小酥肉扣碗"
     ],
     "address": "北仁义胡同",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "da xing jie kou wan bao zi lao dian shou gong xiao long bao xiao su rou kou wan bei ren yi hu tong",
     "_initials": "dxjkwbzldsgxlbxsrkwbryht"
   },
@@ -595,7 +595,7 @@
       "米饭"
     ],
     "address": "西坡街居民楼下路",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "xi po jie yi pin xiang kou wan jie cai rou su rou kou wan mi fan xi po jie ju min lou xia lu",
     "_initials": "xpjypxkwjcrsrkwmfxpjjmlxl"
   },
@@ -785,7 +785,7 @@
       "辣椒油"
     ],
     "address": "鼓楼区徐府街",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "lao chen huang men yu huang men yu guo kui la jiao you gu lou qu xu fu jie",
     "_initials": "lchmyhmygkljyglqxfj"
   },
@@ -830,16 +830,16 @@
   },
   {
     "id": 67,
-    "name": "开封炒绿肉",
+    "name": "开封炒烩肉",
     "dishes": [
-      "炒绿肉",
+      "炒烩肉",
       "白皮面",
       "凉菜"
     ],
     "address": "河大西侧居民区",
-    "category": "正餐类",
-    "_pinyin": "kai feng chao lü rou chao lü rou bai pi mian liang cai he da xi ce ju min qu",
-    "_initials": "kfclrclrbpmlchdxcjmq"
+    "category": "炒菜类",
+    "_pinyin": "kai feng chao hui rou chao hui rou bai pi mian liang cai he da xi ce ju min qu",
+    "_initials": "kfchrchrbpmlchdxcjmq"
   },
   {
     "id": 68,
@@ -850,7 +850,7 @@
       "米饭"
     ],
     "address": "河大学子第二食堂",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "li sa fan dian xing bao gu jia chang xiao chao mi fan he da xue zi di er shi tang",
     "_initials": "lsfdxbgjcxcmfhdxzdest"
   },
@@ -863,7 +863,7 @@
       "烩面"
     ],
     "address": "河大周边",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "pang zi chuan cai guan feng wei qie zi guan tang bao hui mian he da zhou bian",
     "_initials": "pzccgfwqzgtbhmhdzb"
   },
@@ -876,7 +876,7 @@
       "茄汁鸡块"
     ],
     "address": "解放大道南土街段",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "bei jing guan fan dian shuang jiao shao rou jia chang hui cai qie zhi ji kuai jie fang da dao nan tu jie duan",
     "_initials": "bjgfdsjsrjchcqzjkjfddntjd"
   },
@@ -889,7 +889,7 @@
       "豫菜"
     ],
     "address": "宋都御街",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "you yi xin fan dian li yu bei mian tang cu ruan liu yu yu cai song dou yu jie",
     "_initials": "yyxfdlybmtcrlyycsdyj"
   },
@@ -902,7 +902,7 @@
       "丸子"
     ],
     "address": "学院门沿街",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "lao zheng zhou ba da wan mei cai kou rou su rou wan zi xue yuan men yan jie",
     "_initials": "lzzbdwmckrsrwzxymyj"
   },
@@ -915,7 +915,7 @@
       "凉拌野菜"
     ],
     "address": "河大东门",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "long shang nong jia di guo ji di guo ji yu mi tie bing liang ban ye cai he da dong men",
     "_initials": "lsnjdgjdgjymtblbychddm"
   },
@@ -928,7 +928,7 @@
       "麻婆豆腐"
     ],
     "address": "老河大夜市",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "chuan xiang ju jia chang cai shui zhu rou pian yu xiang rou si ma po dou fu lao he da ye shi",
     "_initials": "cxjjccszrpyxrsmpdflhdys"
   },
@@ -941,7 +941,7 @@
       "凉拌木耳"
     ],
     "address": "明伦街巷内",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "long wei ju ran chao ji ran chao ji hui mo liang ban mu er ming lun jie xiang nei",
     "_initials": "lwjrcjrcjhmlbmemljxn"
   },
@@ -1057,7 +1057,7 @@
       "炒菜"
     ],
     "address": "河大周边",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "bian jing feng wei guan kai feng quan tao xiao chi mian shi chao cai he da zhou bian",
     "_initials": "bjfwgkfqtxcmscchdzb"
   },
@@ -1095,7 +1095,7 @@
       "芥菜扣碗"
     ],
     "address": "老城居民区老店",
-    "category": "正餐类",
+    "category": "炒菜类",
     "_pinyin": "kai feng lao wei kou wan mei cai kou rou su rou kou wan jie cai kou wan lao cheng ju min qu lao dian",
     "_initials": "kflwkwmckrsrkwjckwlcjmqld"
   },

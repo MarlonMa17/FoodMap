@@ -325,6 +325,41 @@
       letter-spacing: 1px;
     }
 
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 28px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      background: rgba(30, 18, 10, 0.72);
+      border: 1px solid rgba(184, 134, 11, 0.45);
+      border-radius: 2px;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+      pointer-events: none;
+      z-index: 200;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .back-to-top:hover {
+      background: rgba(30, 18, 10, 0.92);
+      border-color: var(--gold);
+    }
+
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -390,16 +425,16 @@
   <div class="filters-outer">
     <div class="filters" id="filterBtns">
       <button class="filter-btn active" data-cat="全部">全部</button>
+      <button class="filter-btn" data-cat="早餐类">早餐类</button>
+      <button class="filter-btn" data-cat="烧烤类">烧烤类</button>
+      <button class="filter-btn" data-cat="火锅麻辣烫">火锅麻辣烫</button>
+      <button class="filter-btn" data-cat="炒菜类">炒菜类</button>
       <button class="filter-btn" data-cat="汤羹类">汤羹类</button>
       <button class="filter-btn" data-cat="面食类">面食类</button>
       <button class="filter-btn" data-cat="包饺类">包饺类</button>
-      <button class="filter-btn" data-cat="烧烤类">烧烤类</button>
-      <button class="filter-btn" data-cat="卤味类">卤味类</button>
-      <button class="filter-btn" data-cat="正餐类">正餐类</button>
       <button class="filter-btn" data-cat="小吃类">小吃类</button>
+      <button class="filter-btn" data-cat="卤味类">卤味类</button>
       <button class="filter-btn" data-cat="甜品饮品">甜品饮品</button>
-      <button class="filter-btn" data-cat="早餐类">早餐类</button>
-      <button class="filter-btn" data-cat="火锅麻辣烫">火锅麻辣烫</button>
     </div>
     <button class="filters-toggle" id="filtersToggle" aria-label="展开分类" aria-expanded="false">
       <svg width="20" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 20 14">
@@ -423,18 +458,24 @@
 
 <footer>门口的老头严选 &ensp;·&ensp; 仅供参考</footer>
 
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">
+  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 16 16">
+    <polyline points="3,11 8,5 13,11"/>
+  </svg>
+</button>
+
 <script>
 const TAG_CONFIG = {
+  '早餐类':    ['tag-breakfast', '早 餐'],
+  '烧烤类':    ['tag-bbq',       '烧 烤'],
+  '火锅麻辣烫':['tag-hotpot',    '火 锅'],
+  '炒菜类':    ['tag-meal',      '炒 菜'],
   '汤羹类':    ['tag-soup',      '汤 羹'],
   '面食类':    ['tag-noodle',    '面 食'],
   '包饺类':    ['tag-bun',       '包 饺'],
-  '烧烤类':    ['tag-bbq',       '烧 烤'],
-  '卤味类':    ['tag-braised',   '卤 味'],
-  '正餐类':    ['tag-meal',      '正 餐'],
   '小吃类':    ['tag-snack',     '小 吃'],
+  '卤味类':    ['tag-braised',   '卤 味'],
   '甜品饮品':  ['tag-sweet',     '甜 品'],
-  '早餐类':    ['tag-breakfast', '早 餐'],
-  '火锅麻辣烫':['tag-hotpot',    '火 锅'],
 };
 
 let allData = [];
@@ -517,6 +558,14 @@ document.getElementById('filterBtns').addEventListener('click', e => {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   render();
+});
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 300);
+}, { passive: true });
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 fetch('data.json')
