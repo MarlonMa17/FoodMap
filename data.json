@@ -101,12 +101,13 @@
     "dishes": [
       "经典胡辣汤",
       "两棲",
-      "菜角"
+      "菜角",
+      "鸡蛋灌油馍头"
     ],
     "address": "生产后街",
     "category": "汤羹类",
-    "_pinyin": "yan jia lao po hu la tang jing dian hu la tang liang qi cai jiao sheng chan hou jie",
-    "_initials": "yjlphltjdhltlqcjschj"
+    "_pinyin": "yan jia lao po hu la tang jing dian hu la tang liang qi cai jiao ji dan guan you mo tou sheng chan hou jie",
+    "_initials": "yjlphltjdhltlqcjjdgymtschj"
   },
   {
     "id": 10,
