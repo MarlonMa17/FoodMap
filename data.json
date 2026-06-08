@@ -1285,5 +1285,16 @@
     "category": "面食类",
     "_pinyin": "yang rou xian tang he lao mian he lao mian jin an lu rong xun hua yuan",
     "_initials": "yrxthlmhlmjalrxhy"
+  },
+  {
+    "id": 104,
+    "name": "小笼灌汤包",
+    "dishes": [
+      "灌汤包"
+    ],
+    "address": "西蔡屯",
+    "category": "包饺类",
+    "_pinyin": "xiao long guan tang bao guan tang bao xi cai tun",
+    "_initials": "xlgtbgtbxct"
   }
 ]
