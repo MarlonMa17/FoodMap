@@ -6,10 +6,11 @@
       "开封灌汤包",
       "鲤鱼焙面"
     ],
-    "address": "星光天地对面",
+    "address": "黄河大街，星光天地对面",
     "category": "包饺类",
-    "_pinyin": "song yuan kai feng guan tang bao li yu bei mian xing guang tian di dui mian",
-    "_initials": "sykfgtblybmxgtddm"
+    "_pinyin": "song yuan kai feng guan tang bao li yu bei mian huang he da jie ， xing guang tian di dui mian",
+    "_initials": "sykfgtblybmhhdj，xgtddm",
+    "mapKeyword": "宋园灌汤小笼包 黄河大街"
   },
   {
     "id": 2,
@@ -28,10 +29,11 @@
     "dishes": [
       "大肉韭黄锅贴"
     ],
-    "address": "金耀路",
+    "address": "金耀路与黄河大街交叉口向西200米路南",
     "category": "包饺类",
-    "_pinyin": "xing jia guo tie da rou jiu huang guo tie jin yao lu",
-    "_initials": "xjgtdrjhgtjyl"
+    "_pinyin": "xing jia guo tie da rou jiu huang guo tie jin yao lu yu huang he da jie jiao cha kou xiang xi 2 0 0 mi lu nan",
+    "_initials": "xjgtdrjhgtjylyhhdjjckxx200mln",
+    "mapKeyword": "邢家锅贴老店 金耀路店"
   },
   {
     "id": 4,
@@ -57,7 +59,8 @@
     "address": "首座时代北门",
     "category": "烧烤类",
     "_pinyin": "zhang yi shou yuan sheng tai kao rou yuan qie wu hua rou shou zuo shi dai bei men",
-    "_initials": "zysystkryqwhrszsdbm"
+    "_initials": "zysystkryqwhrszsdbm",
+    "mapKeyword": "张一手原生态烤肉 首座时代店"
   },
   {
     "id": 6,
@@ -65,10 +68,11 @@
     "dishes": [
       "李逵五花肉"
     ],
-    "address": "星光天地购物中心",
+    "address": "星光天地购物中心（黄河路99号）",
     "category": "烧烤类",
-    "_pinyin": "shui hu kao rou li kui wu hua rou xing guang tian di gou wu zhong xin",
-    "_initials": "shkrlkwhrxgtdgwzx"
+    "_pinyin": "shui hu kao rou li kui wu hua rou xing guang tian di gou wu zhong xin （ huang he lu 9 9 hao ）",
+    "_initials": "shkrlkwhrxgtdgwzx（hhl99h）",
+    "mapKeyword": "水浒烤肉 开封星光天地"
   },
   {
     "id": 7,
@@ -104,10 +108,11 @@
       "菜角",
       "鸡蛋灌油馍头"
     ],
-    "address": "生产后街",
+    "address": "生产后街（开封宾馆北侧约130米）",
     "category": "汤羹类",
-    "_pinyin": "yan jia lao po hu la tang jing dian hu la tang liang qi cai jiao ji dan guan you mo tou sheng chan hou jie",
-    "_initials": "yjlphltjdhltlqcjjdgymtschj"
+    "_pinyin": "yan jia lao po hu la tang jing dian hu la tang liang qi cai jiao ji dan guan you mo tou sheng chan hou jie （ kai feng bin guan bei ce yue 1 3 0 mi ）",
+    "_initials": "yjlphltjdhltlqcjjdgymtschj（kfbgbcy130m）",
+    "mapKeyword": "闫记老婆胡辣汤"
   },
   {
     "id": 10,
@@ -117,10 +122,11 @@
       "烧饼",
       "辣椒醋"
     ],
-    "address": "大梁门西侧",
+    "address": "大梁门外向西20米路南",
     "category": "汤羹类",
-    "_pinyin": "xi men zheng yang shuang chang yang shuang chang shao bing la jiao cu da liang men xi ce",
-    "_initials": "xmzyscyscsbljcdlmxc"
+    "_pinyin": "xi men zheng yang shuang chang yang shuang chang shao bing la jiao cu da liang men wai xiang xi 2 0 mi lu nan",
+    "_initials": "xmzyscyscsbljcdlmwxx20mln",
+    "mapKeyword": "西门郑羊双肠"
   },
   {
     "id": 11,
@@ -130,10 +136,11 @@
       "驴板肠",
       "饼丝"
     ],
-    "address": "寺后街",
+    "address": "金耀路59号，首座时代北门向西180米路南（总店）",
     "category": "汤羹类",
-    "_pinyin": "hua san lü rou tang lü rou tang lü ban chang bing si si hou jie",
-    "_initials": "hslrtlrtlbcbsshj"
+    "_pinyin": "hua san lü rou tang lü rou tang lü ban chang bing si jin yao lu 5 9 hao ， shou zuo shi dai bei men xiang xi 1 8 0 mi lu nan （ zong dian ）",
+    "_initials": "hslrtlrtlbcbsjyl59h，szsdbmxx180mln（zd）",
+    "mapKeyword": "化三驴肉汤馆 总店"
   },
   {
     "id": 12,
@@ -143,10 +150,11 @@
       "羊杂",
       "烧饼"
     ],
-    "address": "丁角街居民楼",
+    "address": "丁角街与油坊街丁字路口路南",
     "category": "汤羹类",
-    "_pinyin": "zhang lao wu yang rou xian tang qing tang yang rou yang za shao bing ding jiao jie ju min lou",
-    "_initials": "zlwyrxtqtyryzsbdjjjml"
+    "_pinyin": "zhang lao wu yang rou xian tang qing tang yang rou yang za shao bing ding jiao jie yu you fang jie ding zi lu kou lu nan",
+    "_initials": "zlwyrxtqtyryzsbdjjyyfjdzlkln",
+    "mapKeyword": "张老五羊肉鲜汤 丁角街"
   },
   {
     "id": 13,
@@ -233,10 +241,11 @@
       "正宗桶子鸡",
       "凉拌鸡杂"
     ],
-    "address": "西关街",
+    "address": "西关街12号",
     "category": "卤味类",
-    "_pinyin": "pang ji tong zi ji zheng zong tong zi ji liang ban ji za xi guan jie",
-    "_initials": "pjtzjzztzjlbjzxgj"
+    "_pinyin": "pang ji tong zi ji zheng zong tong zi ji liang ban ji za xi guan jie 1 2 hao",
+    "_initials": "pjtzjzztzjlbjzxgj12h",
+    "mapKeyword": "庞记桶子鸡 西关街"
   },
   {
     "id": 20,
@@ -246,10 +255,11 @@
       "鸡脯",
       "荷叶饼"
     ],
-    "address": "鼓楼商圈",
+    "address": "鼓楼广场小吃夜市（胭脂河路口）",
     "category": "卤味类",
-    "_pinyin": "ma yu xing tong zi ji tong zi ji ji pu he ye bing gu lou shang quan",
-    "_initials": "myxtzjtzjjphybglsq"
+    "_pinyin": "ma yu xing tong zi ji tong zi ji ji pu he ye bing gu lou guang chang xiao chi ye shi （ yan zhi he lu kou ）",
+    "_initials": "myxtzjtzjjphybglgcxcys（yzhlk）",
+    "mapKeyword": "马豫兴桶子鸡 鼓楼"
   },
   {
     "id": 21,
@@ -350,10 +360,11 @@
       "小米粥",
       "三浆汤"
     ],
-    "address": "中山路中段",
+    "address": "中山路中段34号",
     "category": "包饺类",
-    "_pinyin": "huang jia lao dian zhu rou guan tang bao xiao mi zhou san jiang tang zhong shan lu zhong duan",
-    "_initials": "hjldzrgtbxmzsjtzslzd"
+    "_pinyin": "huang jia lao dian zhu rou guan tang bao xiao mi zhou san jiang tang zhong shan lu zhong duan 3 4 hao",
+    "_initials": "hjldzrgtbxmzsjtzslzd34h",
+    "mapKeyword": "黄家老店 中山路"
   },
   {
     "id": 29,
@@ -362,10 +373,11 @@
       "经典灌汤包",
       "鲤鱼焙面"
     ],
-    "address": "寺后街",
+    "address": "寺后街8号",
     "category": "包饺类",
-    "_pinyin": "di yi lou jing dian guan tang bao li yu bei mian si hou jie",
-    "_initials": "dyljdgtblybmshj"
+    "_pinyin": "di yi lou jing dian guan tang bao li yu bei mian si hou jie 8 hao",
+    "_initials": "dyljdgtblybmshj8h",
+    "mapKeyword": "开封第一楼 寺后街店"
   },
   {
     "id": 30,
@@ -632,7 +644,8 @@
     "address": "老河大夜市内",
     "category": "面食类",
     "_pinyin": "shan xi you po mian you po che mian sao zi mian bing feng qi shui lao he da ye shi nei",
-    "_initials": "sxypmypcmszmbfqslhdysn"
+    "_initials": "sxypmypcmszmbfqslhdysn",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 51,
@@ -728,10 +741,11 @@
       "锅盔",
       "辣椒油"
     ],
-    "address": "鼓楼区徐府街",
+    "address": "内环东路中段125号（维中后街口）",
     "category": "炒菜类",
-    "_pinyin": "lao chen huang men yu huang men yu guo kui la jiao you gu lou qu xu fu jie",
-    "_initials": "lchmyhmygkljyglqxfj"
+    "_pinyin": "lao chen huang men yu huang men yu guo kui la jiao you nei huan dong lu zhong duan 1 2 5 hao （ wei zhong hou jie kou ）",
+    "_initials": "lchmyhmygkljynhdlzd125h（wzhjk）",
+    "mapKeyword": "四代祖传老陈黄焖鱼"
   },
   {
     "id": 59,
@@ -819,10 +833,10 @@
       "家常烩菜",
       "茄汁鸡块"
     ],
-    "address": "解放大道南土街段",
+    "address": "南土街（三毛隔壁）",
     "category": "炒菜类",
-    "_pinyin": "bei jing guan fan dian shuang jiao shao rou jia chang hui cai qie zhi ji kuai jie fang da dao nan tu jie duan",
-    "_initials": "bjgfdsjsrjchcqzjkjfddntjd"
+    "_pinyin": "bei jing guan fan dian shuang jiao shao rou jia chang hui cai qie zhi ji kuai nan tu jie （ san mao ge bi ）",
+    "_initials": "bjgfdsjsrjchcqzjkntj（smgb）"
   },
   {
     "id": 66,
@@ -874,7 +888,8 @@
     "address": "老河大夜市",
     "category": "炒菜类",
     "_pinyin": "chuan xiang ju jia chang cai shui zhu rou pian yu xiang rou si ma po dou fu lao he da ye shi",
-    "_initials": "cxjjccszrpyxrsmpdflhdys"
+    "_initials": "cxjjccszrpyxrsmpdflhdys",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 70,
@@ -899,7 +914,8 @@
     "address": "老河大夜市排队王",
     "category": "小吃类",
     "_pinyin": "pang zi bai ji mo rou jia mo chun shou rou bai ji mo lao he da ye shi pai dui wang",
-    "_initials": "pzbjmrjmcsrbjmlhdyspdw"
+    "_initials": "pzbjmrjmcsrbjmlhdyspdw",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 72,
@@ -912,7 +928,8 @@
     "address": "老河大夜市（网红老店）",
     "category": "小吃类",
     "_pinyin": "ma jia jiong kao ji tui ji pi kao ji tui ji pi jia shao bing kao shu cai lao he da ye shi （ wang hong lao dian ）",
-    "_initials": "mjjkjtjpkjtjpjsbksclhdys（whld）"
+    "_initials": "mjjkjtjpkjtjpjsbksclhdys（whld）",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 73,
@@ -925,7 +942,8 @@
     "address": "老河大夜市元老级摊位",
     "category": "小吃类",
     "_pinyin": "lao he da chao liang fen tong chao liang fen jiao xiang liang fen ban mo lao he da ye shi yuan lao ji tan wei",
-    "_initials": "lhdclftclfjxlfbmlhdysyljtw"
+    "_initials": "lhdclftclfjxlfbmlhdysyljtw",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 74,
@@ -938,7 +956,8 @@
     "address": "老河大夜市",
     "category": "火锅麻辣烫",
     "_pinyin": "wu la la tong kuan ma la tang lao shi ma la tang hun su chuan chuan bing fen lao he da ye shi",
-    "_initials": "wlltkmltlsmlthsccbflhdys"
+    "_initials": "wlltkmltlsmlthsccbflhdys",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 75,
@@ -951,7 +970,8 @@
     "address": "老河大夜市",
     "category": "甜品饮品",
     "_pinyin": "tai wan hong dou bing hong dou bing nai you bing yu ni bing lao he da ye shi",
-    "_initials": "twhdbhdbnybynblhdys"
+    "_initials": "twhdbhdbnybynblhdys",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 76,
@@ -964,7 +984,8 @@
     "address": "老河大夜市",
     "category": "小吃类",
     "_pinyin": "tie ban li ji tie ban li ji rou tie ban dou fu kao leng mian lao he da ye shi",
-    "_initials": "tbljtbljrtbdfklmlhdys"
+    "_initials": "tbljtbljrtbdfklmlhdys",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 77,
@@ -977,7 +998,8 @@
     "address": "老河大夜市",
     "category": "甜品饮品",
     "_pinyin": "lao nai nai hua sheng nai shou gong hua sheng nai re yin tian pin lao he da ye shi",
-    "_initials": "lnnhsnsghsnrytplhdys"
+    "_initials": "lnnhsnsghsnrytplhdys",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 78,
@@ -990,7 +1012,8 @@
     "address": "老河大夜市",
     "category": "小吃类",
     "_pinyin": "kao mian jin lao dian ma la kao mian jin kao chang kao shu cai lao he da ye shi",
-    "_initials": "kmjldmlkmjkcksclhdys"
+    "_initials": "kmjldmlkmjkcksclhdys",
+    "mapKeyword": "老河大西门夜市"
   },
   {
     "id": 79,
@@ -1051,10 +1074,11 @@
       "五香花生",
       "花生糕"
     ],
-    "address": "中山路百年特产老店",
+    "address": "中山路北段84号",
     "category": "小吃类",
-    "_pinyin": "xing sheng de hua sheng lao dian ma la hua sheng wu xiang hua sheng hua sheng gao zhong shan lu bai nian te chan lao dian",
-    "_initials": "xsdhsldmlhswxhshsgzslbntcld"
+    "_pinyin": "xing sheng de hua sheng lao dian ma la hua sheng wu xiang hua sheng hua sheng gao zhong shan lu bei duan 8 4 hao",
+    "_initials": "xsdhsldmlhswxhshsgzslbd84h",
+    "mapKeyword": "兴盛德花生老店 中山路店"
   },
   {
     "id": 84,
@@ -1073,10 +1097,11 @@
     "dishes": [
       "烧饼夹肉"
     ],
-    "address": "老城街巷老牌门店",
+    "address": "草市街80号",
     "category": "小吃类",
-    "_pinyin": "sun ji shao bing jia rou shao bing jia rou lao cheng jie xiang lao pai men dian",
-    "_initials": "sjsbjrsbjrlcjxlpmd"
+    "_pinyin": "sun ji shao bing jia rou shao bing jia rou cao shi jie 8 0 hao",
+    "_initials": "sjsbjrsbjrcsj80h",
+    "mapKeyword": "孙记烧饼夹肉 草市街店"
   },
   {
     "id": 86,
@@ -1085,10 +1110,11 @@
       "老式胡辣汤",
       "羊肉包"
     ],
-    "address": "生产后街",
+    "address": "生产后街（开封宾馆北侧约130米）",
     "category": "汤羹类",
-    "_pinyin": "yan jia lao po hu la tang lao shi hu la tang yang rou bao sheng chan hou jie",
-    "_initials": "yjlphltlshltyrbschj"
+    "_pinyin": "yan jia lao po hu la tang lao shi hu la tang yang rou bao sheng chan hou jie （ kai feng bin guan bei ce yue 1 3 0 mi ）",
+    "_initials": "yjlphltlshltyrbschj（kfbgbcy130m）",
+    "mapKeyword": "闫记老婆胡辣汤"
   },
   {
     "id": 87,
@@ -1097,10 +1123,11 @@
       "老汤卤肉",
       "卤猪蹄"
     ],
-    "address": "老城道光年间传承老店",
+    "address": "劳动路（河大新区西门西南约80米）",
     "category": "卤味类",
-    "_pinyin": "hua jing chen ji lu rou lao tang lu rou lu zhu ti lao cheng dao guang nian jian chuan cheng lao dian",
-    "_initials": "hjcjlrltlrlztlcdgnjccld"
+    "_pinyin": "hua jing chen ji lu rou lao tang lu rou lu zhu ti lao dong lu （ he da xin qu xi men xi nan yue 8 0 mi ）",
+    "_initials": "hjcjlrltlrlztldl（hdxqxmxny80m）",
+    "mapKeyword": "花井陈记卤肉老店"
   },
   {
     "id": 88,
@@ -1158,7 +1185,8 @@
     "address": "大梁路老字号门店",
     "category": "卤味类",
     "_pinyin": "ma yu xing tong zi ji zhao pai tong zi ji ji za pin pan da liang lu lao zi hao men dian",
-    "_initials": "myxtzjzptzjjzppdlllzhmd"
+    "_initials": "myxtzjzptzjjzppdlllzhmd",
+    "mapKeyword": "马豫兴 大梁路"
   },
   {
     "id": 93,
@@ -1166,10 +1194,11 @@
     "dishes": [
       "灌汤包"
     ],
-    "address": "魏都路",
+    "address": "魏都路66号（与大庆路口西北角）",
     "category": "包饺类",
-    "_pinyin": "song dou he yuan guan tang bao wei dou lu",
-    "_initials": "sdhygtbwdl"
+    "_pinyin": "song dou he yuan guan tang bao wei dou lu 6 6 hao （ yu da qing lu kou xi bei jiao ）",
+    "_initials": "sdhygtbwdl66h（ydqlkxbj）",
+    "mapKeyword": "禾源灌汤包子 魏都路"
   },
   {
     "id": 94,
@@ -1203,8 +1232,8 @@
     ],
     "address": "夷山大街北段",
     "category": "甜品饮品",
-    "_pinyin": "",
-    "_initials": ""
+    "_pinyin": "mai he lu yu bo luo bao yi shan da jie bei duan",
+    "_initials": "mhlyblbysdjbd"
   },
   {
     "id": 97,
@@ -1214,8 +1243,8 @@
     ],
     "address": "星光天地",
     "category": "火锅麻辣烫",
-    "_pinyin": "",
-    "_initials": ""
+    "_pinyin": "yuan he ji niu yang rou xing guang tian di",
+    "_initials": "yhjnyrxgtd"
   },
   {
     "id": 98,
@@ -1223,10 +1252,11 @@
     "dishes": [
       "毛肚"
     ],
-    "address": "万达",
+    "address": "万达广场4层",
     "category": "火锅麻辣烫",
-    "_pinyin": "",
-    "_initials": ""
+    "_pinyin": "ba nu mao du wan da guang chang 4 ceng",
+    "_initials": "bnmdwdgc4c",
+    "mapKeyword": "巴奴毛肚火锅 开封万达广场店"
   },
   {
     "id": 99,
@@ -1257,10 +1287,11 @@
     "dishes": [
       "鱿鱼"
     ],
-    "address": "万达",
+    "address": "万达广场",
     "category": "炒菜类",
-    "_pinyin": "mi cun ban fan you yu wan da",
-    "_initials": "mcbfyywd"
+    "_pinyin": "mi cun ban fan you yu wan da guang chang",
+    "_initials": "mcbfyywdgc",
+    "mapKeyword": "米村拌饭 开封万达广场店"
   },
   {
     "id": 102,
