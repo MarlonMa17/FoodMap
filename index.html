@@ -794,7 +794,7 @@
     <div class="form-row">
       <label class="form-label" for="s-token">Personal Access Token</label>
       <input class="form-input" type="password" id="s-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
-      <div class="form-hint">需要 <strong>repo</strong> 读写权限 &ensp;·&ensp; <a href="https://github.com/settings/tokens/new?scopes=repo&description=FoodMap" target="_blank" rel="noopener">点此创建 Token</a></div>
+      <div class="form-hint">推荐 Fine-grained Token：仅授权本仓库，<strong>Contents</strong> 读写权限 &ensp;·&ensp; <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">点此创建 Token</a></div>
     </div>
     <div class="modal-actions">
       <button type="button" class="btn-cancel" id="settingsCancel">取消</button>
@@ -959,11 +959,15 @@ let currentCat = '全部';
 let currentQ   = '';
 let editingId  = null;
 
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
 function doSearch(q) {
   if (!q.trim()) return allData;
   const lq = q.trim().toLowerCase();
   return allData.filter(r => {
-    const textMatch = [r.name, ...r.dishes, r.address, r.category].some(s => s.includes(lq));
+    const textMatch = [r.name, ...r.dishes, r.address, r.category].some(s => s.toLowerCase().includes(lq));
     const pinyinMatch = (r._pinyin || '').includes(lq) || (r._initials || '').includes(lq);
     return textMatch || pinyinMatch;
   });
@@ -979,10 +983,10 @@ function render() {
     return;
   }
   const canEdit = !!getGitHubConfig();
-  grid.innerHTML = results.map(r => {
+  grid.innerHTML = results.map((r, idx) => {
     const [tagCls, tagLabel] = TAG_CONFIG[r.category] || ['', r.category];
-    const dishesHtml = r.dishes.map((d, i) => i < r.dishes.length - 1 ? `${d}<span class="dish-dot">·</span>` : d).join('');
-    const numStr = String(r.id).padStart(2, '0');
+    const dishesHtml = r.dishes.map((d, i) => i < r.dishes.length - 1 ? `${escapeHtml(d)}<span class="dish-dot">·</span>` : escapeHtml(d)).join('');
+    const numStr = String(idx + 1).padStart(2, '0');
     const actionBtns = canEdit ? `
       <button class="card-delete" data-id="${r.id}" aria-label="删除">
         <svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 10 10">
@@ -998,16 +1002,16 @@ function render() {
       ${actionBtns}
       <div class="card-meta">
         <span class="card-num">No.${numStr}</span>
-        <span class="card-tag ${tagCls}">${tagLabel}</span>
+        <span class="card-tag ${tagCls}">${escapeHtml(tagLabel)}</span>
       </div>
-      <div class="card-name">${r.name}</div>
+      <div class="card-name">${escapeHtml(r.name)}</div>
       <div class="card-rule"></div>
       <div class="card-dishes">${dishesHtml}</div>
       <div class="card-address">
         <svg class="card-address-icon" width="11" height="14" fill="currentColor" viewBox="0 0 12 16">
           <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7.5C4.62 7.5 3.5 6.38 3.5 5S4.62 2.5 6 2.5 8.5 3.62 8.5 5 7.38 7.5 6 7.5z"/>
         </svg>
-        <span>${r.address}</span>
+        <span>${escapeHtml(r.address)}</span>
       </div>
     </div>`;
   }).join('');
@@ -1075,9 +1079,7 @@ document.getElementById('grid').addEventListener('click', async e => {
   const delId = Number(delBtn.dataset.id);
   const entry = allData.find(r => r.id === delId);
   if (!await showConfirm(entry?.name || '')) return;
-  allData = allData
-    .filter(r => r.id !== delId)
-    .map((r, i) => ({ ...r, id: i + 1 }));
+  allData = allData.filter(r => r.id !== delId);
   render();
   syncToGitHub();
 });
@@ -1119,7 +1121,7 @@ addForm.addEventListener('submit', e => {
     closeModal();
     syncToGitHub();
   } else {
-    const newId = allData.length + 1;
+    const newId = allData.reduce((m, r) => Math.max(m, r.id), 0) + 1;
     allData.push({ id: newId, name, dishes, address, category, _pinyin, _initials });
     currentCat = '全部';
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === '全部'));
