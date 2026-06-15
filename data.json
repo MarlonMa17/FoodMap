@@ -536,12 +536,13 @@
     "dishes": [
       "绿豆糕",
       "汤包",
+      "锅贴",
       "茉莉花茶"
     ],
     "address": "宋都御街73号",
-    "category": "甜品饮品",
-    "_pinyin": "dao xiang ju lü dou gao tang bao mo li hua cha song dou yu jie 7 3 hao",
-    "_initials": "dxjldgtbmlhcsdyj73h",
+    "category": "包饺类",
+    "_pinyin": "dao xiang ju lü dou gao tang bao guo tie mo li hua cha song dou yu jie 7 3 hao",
+    "_initials": "dxjldgtbgtmlhcsdyj73h",
     "mapKeyword": "稻香居锅贴 宋都御街店"
   },
   {
