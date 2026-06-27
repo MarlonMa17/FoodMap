@@ -1266,5 +1266,16 @@
     "category": "烧烤类",
     "_pinyin": "tan yan kao rou rou xing guang tian di",
     "_initials": "tykrrxgtd"
+  },
+  {
+    "id": 105,
+    "name": "华北老四羊肉鲜汤总店",
+    "dishes": [
+      "羊肉汤"
+    ],
+    "address": "龙亭区开封市人民体育场6号门旁",
+    "category": "汤羹类",
+    "_pinyin": "hua bei lao si yang rou xian tang zong dian yang rou tang long ting qu kai feng shi ren min ti yu chang 6 hao men pang",
+    "_initials": "hblsyrxtzdyrtltqkfsrmtyc6hmp"
   }
 ]
