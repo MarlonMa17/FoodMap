@@ -1255,5 +1255,18 @@
     "category": "火锅麻辣烫",
     "_pinyin": "meng ba tu shuan yang rou yang rou chuan kai yuan guang chang",
     "_initials": "mbtsyryrckygc"
+  },
+  {
+    "id": 107,
+    "name": "郑香豫烩面",
+    "dishes": [
+      "烩面",
+      "羊肉串",
+      "小笼包"
+    ],
+    "address": "晋安路",
+    "category": "面食类",
+    "_pinyin": "zheng xiang yu hui mian hui mian yang rou chuan xiao long bao jin an lu",
+    "_initials": "zxyhmhmyrcxlbjal"
   }
 ]
