@@ -1268,5 +1268,16 @@
     "category": "面食类",
     "_pinyin": "zheng xiang yu hui mian hui mian yang rou chuan xiao long bao jin an lu",
     "_initials": "zxyhmhmyrcxlbjal"
+  },
+  {
+    "id": 108,
+    "name": "沙家杠子油条",
+    "dishes": [
+      "油条"
+    ],
+    "address": "鼓楼区小纸坊街",
+    "category": "早餐类",
+    "_pinyin": "sha jia gang zi you tiao you tiao gu lou qu xiao zhi fang jie",
+    "_initials": "sjgzytytglqxzfj"
   }
 ]
